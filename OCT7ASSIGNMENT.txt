@@ -1,0 +1,57 @@
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| company_staff      |
+| companys           |
+| group1             |
+| information_schema |
+| jfstwo             |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> USE COMPANY_STAFF;
+Database changed
+mysql> CREATE TABLE CMPEMP;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> CREATE TABLE CMPEMP(
+    -> EMP_ID INT,
+    -> AGE TINYINT,
+    -> EXPERIENCE SMALLINT,
+    -> GENDER CHAR(1),
+    -> EMP_NAME VARCHAR(50),
+    -> ADDRESS TINYTEXT,
+    -> SALARY DECIMAL(10,2),
+    -> DEPT ENUM('HR','IT','SALES','FINANCE','SUPPORT'),
+    -> SKILLS SET('JAVA','PYTHON','SQL','EXCEL','COMMUNICATION'),
+    -> DOJ DATE
+    -> );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> DESC CMPEMP;
++------------+----------------------------------------------------+------+-----+---------+-------+
+| Field      | Type                                               | Null | Key | Default | Extra |
++------------+----------------------------------------------------+------+-----+---------+-------+
+| EMP_ID     | int                                                | YES  |     | NULL    |       |
+| AGE        | tinyint                                            | YES  |     | NULL    |       |
+| EXPERIENCE | smallint                                           | YES  |     | NULL    |       |
+| GENDER     | char(1)                                            | YES  |     | NULL    |       |
+| EMP_NAME   | varchar(50)                                        | YES  |     | NULL    |       |
+| ADDRESS    | tinytext                                           | YES  |     | NULL    |       |
+| SALARY     | decimal(10,2)                                      | YES  |     | NULL    |       |
+| DEPT       | enum('HR','IT','SALES','FINANCE','SUPPORT')        | YES  |     | NULL    |       |
+| SKILLS     | set('JAVA','PYTHON','SQL','EXCEL','COMMUNICATION') | YES  |     | NULL    |       |
+| DOJ        | date                                               | YES  |     | NULL    |       |
++------------+----------------------------------------------------+------+-----+---------+-------+
+10 rows in set (0.01 sec)
+
+mysql> SHOW TABLES;
++-------------------------+
+| Tables_in_company_staff |
++-------------------------+
+| cmpemp                  |
++-------------------------+
+1 row in set (0.00 sec)
