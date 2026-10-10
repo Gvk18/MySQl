@@ -1,0 +1,95 @@
+QUERY-1:
+ALTER TABLE CMPEMP ADD EMAIL VARCHAR(100);
+Query OK, 0 rows affected (0.10 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+QUERY-2:
+mysql> ALTER TABLE CMPEMP ADD PHONE_NUMBER BIGINT;
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+QUERY-3:
+mysql> ALTER TABLE CMPEMP ADD BONUS DECIMAL(10,2) AFTER SALARY;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+QUERY-4:
+mysql> ALTER TABLE CMPEMP ADD STATUS VARCHAR(20) AFTER DEPT;
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+QUERY-5:
+mysql> ALTER TABLE CMPEMP ADD COMPANY_NAME VARCHAR(50) FIRST;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+QUERY-6:
+mysql> ALTER TABLE CMPEMP ADD QUALIFICATION VARCHAR(50) AFTER EMP_NAME;
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+QUERY-7:
+mysql> ALTER TABLE CMPEMP MODIFY EMP_NAME VARCHAR(100);
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+QUERY-8:
+mysql> ALTER TABLE CMPEMP MODIFY SALARY DECIMAL(12,2);
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+QUERY-9:
+ALTER TABLE CMPEMP RENAME COLUMN EMP_NAME TO EMPLOYEE_NAME;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+QUERY-10:
+mysql> ALTER TABLE CMPEMP RENAME COLUMN DOJ TO JOINING_DATE;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+QUERY-11:
+mysql> ALTER TABLE CMPEMP DROP COLUMN BONUS;
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+QUERY-12:
+mysql> ALTER TABLE CMPEMP DROP COLUMN PHONE_NUMBER;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+QUERY-13:
+mysql> ALTER TABLE CMPEMP RENAME TO STAFF_MEMBERS;
+Query OK, 0 rows affected (0.04 sec)
+
+QUERY-14:
+mysql> ALTER TABLE STAFF_MEMBERS RENAME TO COMPANY_STAFF;
+Query OK, 0 rows affected (0.04 sec)
+
+QUERY-15:
+mysql> ALTER TABLE COMPANY_STAFF ADD COLUMN LAST_UPDATED DATE AFTER SKILLS;
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC COMPANY_STAFF;
++---------------+----------------------------------------------------+------+-----+---------+-------+
+| Field         | Type                                               | Null | Key | Default | Extra |
++---------------+----------------------------------------------------+------+-----+---------+-------+
+| COMPANY_NAME  | varchar(50)                                        | YES  |     | NULL    |       |
+| EMP_ID        | int                                                | YES  |     | NULL    |       |
+| AGE           | tinyint                                            | YES  |     | NULL    |       |
+| EXPERIENCE    | smallint                                           | YES  |     | NULL    |       |
+| GENDER        | char(1)                                            | YES  |     | NULL    |       |
+| EMPLOYEE_NAME | varchar(100)                                       | YES  |     | NULL    |       |
+| QUALIFICATION | varchar(50)                                        | YES  |     | NULL    |       |
+| ADDRESS       | tinytext                                           | YES  |     | NULL    |       |
+| SALARY        | decimal(12,2)                                      | YES  |     | NULL    |       |
+| DEPT          | enum('HR','IT','SALES','FINANCE','SUPPORT')        | YES  |     | NULL    |       |
+| STATUS        | varchar(20)                                        | YES  |     | NULL    |       |
+| SKILLS        | set('JAVA','PYTHON','SQL','EXCEL','COMMUNICATION') | YES  |     | NULL    |       |
+| LAST_UPDATED  | date                                               | YES  |     | NULL    |       |
+| JOINING_DATE  | date                                               | YES  |     | NULL    |       |
+| EMAIL         | varchar(100)                                       | YES  |     | NULL    |       |
++---------------+----------------------------------------------------+------+-----+---------+-------+
+15 rows in set (0.01 sec)
+
