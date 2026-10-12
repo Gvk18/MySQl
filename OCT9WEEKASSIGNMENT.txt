@@ -1,0 +1,303 @@
+DDL, DML, DQL Practice Questions
+
+Table Creation
+
+1. Create a table named employees with the columns emp_id, emp_name, department, job_role, salary, joining_date, and city.
+
+mysql> CREATE TABLE EMPLOYEES(
+    -> EMP_ID VARCHAR(50),
+    -> EMP_NAME VARCHAR(100),
+    -> DEPT VARCHAR(50),
+    -> JOB_ROLE VARCHAR(60),
+    -> SALARY DECIMAL(12,2),
+    -> DOJ DATE,
+    -> CITY VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> DESC EMPLOYEES;
++----------+---------------+------+-----+---------+-------+
+| Field    | Type          | Null | Key | Default | Extra |
++----------+---------------+------+-----+---------+-------+
+| EMP_ID   | varchar(50)   | YES  |     | NULL    |       |
+| EMP_NAME | varchar(100)  | YES  |     | NULL    |       |
+| DEPT     | varchar(50)   | YES  |     | NULL    |       |
+| JOB_ROLE | varchar(60)   | YES  |     | NULL    |       |
+| SALARY   | decimal(12,2) | YES  |     | NULL    |       |
+| DOJ      | date          | YES  |     | NULL    |       |
+| CITY     | varchar(50)   | YES  |     | NULL    |       |
++----------+---------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+2. Insert the given 10 employee records into the employees table.
+
+mysql> INSERT INTO EMPLOYEES VALUES('EMP101','AJAY','FINANCE','ACCOUNTANT',120000.23,2014-10-12,'BNG');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO EMPLOYEES VALUES('EMP102','RAVI','IT COMPANY','DEVELOPER',100000.00,'2012-07-22','HYD');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEES VALUES('EMP103','PRIYASHARMA','IT COMPANY','TESTER',160000.00,'2010-09-24',' CHENNAI');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEES VALUES('EMP104','KIRANREDDY','IT COMPANY','TESTER',70000.00,'2014-03-14','CHENNAI');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEES VALUES('EMP105','ARUNKUMAR','IT COMPANY','SENIORTESTER',90000.00,'2017-03-14','HYD');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEES VALUES('EMP106','Anjali Devi','IT COMPANY','SENIORTESTER',100000.00,'2017-03-14','HYD');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEES VALUES('EMP107','BASHA','BANKING','MANAGER',100000.00,'2017-05-15','HYD');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEES VALUES('EMP108','CHAND','BANKING','SERVICER',120000.00,'2011-07-25','BNG');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEES VALUES('EMP109','DINESH','GOVT','TEACHER',60000.00,'2005-09-15','VJY');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEES VALUES('EMP110','VIKRAM','PRIVATESECTOR','BUSINESSMAN',2000000.00,'2015-09-05','VJY');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT*FROM EMPLOYEES;
++--------+-------------+---------------+--------------+------------+------------+----------+
+| EMP_ID | EMP_NAME    | DEPT          | JOB_ROLE     | SALARY     | DOJ        | CITY     |
++--------+-------------+---------------+--------------+------------+------------+----------+
+| EMP101 | AJAY        | FINANCE       | ACCOUNTANT   |  120000.23 | 2014-10-12 | BNG      |
+| EMP102 | RAVI        | IT COMPANY    | DEVELOPER    |  100000.00 | 2012-07-22 | HYD      |
+| EMP103 | PRIYASHARMA | IT COMPANY    | TESTER       |  160000.00 | 2010-09-24 |  CHENNAI |
+| EMP104 | KIRANREDDY  | IT COMPANY    | TESTER       |   70000.00 | 2014-03-14 | CHENNAI  |
+| EMP105 | ARUNKUMAR   | IT COMPANY    | SENIORTESTER |   90000.00 | 2017-03-14 | HYD      |
+| EMP106 | Anjali Devi | IT COMPANY    | SENIORTESTER |  100000.00 | 2017-03-14 | HYD      |
+| EMP107 | BASHA       | BANKING       | MANAGER      |  100000.00 | 2017-05-15 | HYD      |
+| EMP108 | CHAND       | BANKING       | SERVICER     |  120000.00 | 2011-07-25 | BNG      |
+| EMP109 | DINESH      | GOVT          | TEACHER      |   60000.00 | 2005-09-15 | VJY      |
+| EMP110 | VIKRAM      | PRIVATESECTOR | BUSINESSMAN  | 2000000.00 | 2015-09-05 | VJY      |
++--------+-------------+---------------+--------------+------------+------------+----------+
+10 rows in set (0.00 sec)
+
+
+1. Update the salary of Ravi Kumar to 50000.
+mysql> UPDATE EMPLOYEES SET SALARY=50000 WHERE EMP_NAME='RAVI';
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+2. Increase the salary by 10% for all IT employees.
+
+mysql> UPDATE EMPLOYEES SET SALARY=SALARY*0.10 WHERE DEPT='IT COMPANY';
+Query OK, 5 rows affected (0.01 sec)
+Rows matched: 5  Changed: 5  Warnings: 0
+
+mysql> SELECT*FROM EMPLOYEES;
++--------+-------------+---------------+--------------+------------+------------+----------+
+| EMP_ID | EMP_NAME    | DEPT          | JOB_ROLE     | SALARY     | DOJ        | CITY     |
++--------+-------------+---------------+--------------+------------+------------+----------+
+| EMP101 | AJAY        | FINANCE       | ACCOUNTANT   |  120000.23 | 2014-10-12 | BNG      |
+| EMP102 | RAVI        | IT COMPANY    | DEVELOPER    |    5000.00 | 2012-07-22 | HYD      |
+| EMP103 | PRIYASHARMA | IT COMPANY    | TESTER       |   16000.00 | 2010-09-24 |  CHENNAI |
+| EMP104 | KIRANREDDY  | IT COMPANY    | TESTER       |    7000.00 | 2014-03-14 | CHENNAI  |
+| EMP105 | ARUNKUMAR   | IT COMPANY    | SENIORTESTER |    9000.00 | 2017-03-14 | HYD      |
+| EMP106 | Anjali Devi | IT COMPANY    | SENIORTESTER |   10000.00 | 2017-03-14 | HYD      |
+| EMP107 | BASHA       | BANKING       | MANAGER      |  100000.00 | 2017-05-15 | HYD      |
+| EMP108 | CHAND       | BANKING       | SERVICER     |  120000.00 | 2011-07-25 | BNG      |
+| EMP109 | DINESH      | GOVT          | TEACHER      |   60000.00 | 2005-09-15 | VJY      |
+| EMP110 | VIKRAM      | PRIVATESECTOR | BUSINESSMAN  | 2000000.00 | 2015-09-05 | VJY      |
++--------+-------------+---------------+--------------+------------+------------+----------+
+10 rows in set (0.00 sec)
+
+3. Change Priya Sharma's city to Vizag.
+mysql> UPDATE EMPLOYEES SET CITY='VIZAG' WHERE EMP_NAME='PRIYASHARMA';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+4. Change Kiran Reddy's job role to Senior Tester.
+mysql> UPDATE EMPLOYEES SET JOB_ROLE='Senior Tester' WHERE EMP_NAME='KIRANREDDY';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+5. Increase the salary by 5000 for all HR employees.
+mysql> UPDATE EMPLOYEES SET SALARY=SALARY+5000 WHERE DEPT='IT COMPANY';
+Query OK, 5 rows affected (0.01 sec)
+Rows matched: 5  Changed: 5  Warnings: 0
+
+6. Change the city of all employees working in Vizag to Hyderabad.
+mysql> UPDATE EMPLOYEES SET CITY='HYDERABAD' WHERE CITY='VIZAG';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+7. Change Arun Kumar's department to Development.
+mysql> UPDATE EMPLOYEES SET JOB_ROLE='DEVELOPER' WHERE EMP_NAME='ARUNKUMAR';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+8. Increase the salary by 15% for employees earning less than 45000.
+mysql> UPDATE EMPLOYEES SET SALARY=SALARY*0.15 WHERE SALARY<45000;
+Query OK, 5 rows affected (0.01 sec)
+Rows matched: 5  Changed: 5  Warnings: 0
+
+9. Change Anjali Devi's job role to Senior Developer.
+mysql> UPDATE EMPLOYEES SET JOB_ROLE='SENIOR DEVELOPER' WHERE EMP_NAME='ANJALI DEVI';
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+10. Update the city of all Finance employees to Bangalore.
+mysql> UPDATE EMPLOYEES SET CITY='BANGALORE' WHERE DEPT='FINANCE';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT* FROM EMPLOYEES;
++--------+-------------+---------------+------------------+------------+------------+-----------+
+| EMP_ID | EMP_NAME    | DEPT          | JOB_ROLE         | SALARY     | DOJ        | CITY      |
++--------+-------------+---------------+------------------+------------+------------+-----------+
+| EMP101 | AJAY        | FINANCE       | ACCOUNTANT       |  120000.23 | 2014-10-12 | BANGALORE |
+| EMP102 | RAVI        | IT COMPANY    | DEVELOPER        |    1500.00 | 2012-07-22 | HYD       |
+| EMP103 | PRIYASHARMA | IT COMPANY    | TESTER           |    3150.00 | 2010-09-24 | HYDERABAD |
+| EMP104 | KIRANREDDY  | IT COMPANY    | Senior Tester    |    1800.00 | 2014-03-14 | CHENNAI   |
+| EMP105 | ARUNKUMAR   | IT COMPANY    | DEVELOPER        |    2100.00 | 2017-03-14 | HYD       |
+| EMP106 | Anjali Devi | IT COMPANY    | SENIOR DEVELOPER |    2250.00 | 2017-03-14 | HYD       |
+| EMP107 | BASHA       | BANKING       | MANAGER          |  100000.00 | 2017-05-15 | HYD       |
+| EMP108 | CHAND       | BANKING       | SERVICER         |  120000.00 | 2011-07-25 | BNG       |
+| EMP109 | DINESH      | GOVT          | TEACHER          |   60000.00 | 2005-09-15 | VJY       |
+| EMP110 | VIKRAM      | PRIVATESECTOR | BUSINESSMAN      | 2000000.00 | 2015-09-05 | VJY       |
++--------+-------------+---------------+------------------+------------+------------+-----------+
+10 rows in set (0.00 sec)
+
+Delete Questions
+
+1. Delete the employee whose ID is 106.
+mysql> DELETE FROM EMPLOYEES WHERE EMP_ID='EMP106';
+Query OK, 1 row affected (0.01 sec)
+
+2. Delete all employees from the Finance department.
+mysql> DELETE FROM EMPLOYEES WHERE DEPT='FINANCE';
+Query OK, 1 row affected (0.01 sec)
+
+3. Delete employees earning less than 40000.
+mysql> DELETE FROM EMPLOYEES WHERE SALARY<40000;
+Query OK, 4 rows affected (0.01 sec)
+
+4. Delete all employees working in Vizag.
+mysql> DELETE FROM EMPLOYEES WHERE CITY='VIZAG';
+Query OK, 0 rows affected (0.00 sec)
+
+5. Delete the employee named Suresh Babu.
+mysql> DELETE FROM EMPLOYEES WHERE EMP_NAME='SURESH BABU';
+Query OK, 0 rows affected (0.00 sec)
+
+6. Delete employees who joined before January 1, 2006.
+mysql> DELETE FROM EMPLOYEES WHERE DOJ='2006-01-01';
+Query OK, 0 rows affected (0.01 sec)
+
+7. Delete all employees working as Recruiters.
+mysql> DELETE FROM EMPLOYEES WHERE JOB_ROLE='RECRUITER';
+Query OK, 0 rows affected (0.00 sec)
+
+8. Delete employees from the Sales department earning less than 50000.
+mysql> DELETE FROM EMPLOYEES WHERE DEPT ='SALES DEPT' AND SALARY<50000;
+Query OK, 0 rows affected (0.00 sec)
+
+9. Delete the employee or employees who have the lowest salary.
+mysql> DELETE FROM EMPLOYEES ORDER BY SALARY ASC LIMIT 1;
+Query OK, 1 row affected (0.01 sec)
+
+10. Delete all employees whose city is Chennai.
+mysql> DELETE FROM EMPLOYEES WHERE CITY='CHENNAI';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES;
++--------+----------+---------------+-------------+------------+------------+------+
+| EMP_ID | EMP_NAME | DEPT          | JOB_ROLE    | SALARY     | DOJ        | CITY |
++--------+----------+---------------+-------------+------------+------------+------+
+| EMP107 | BASHA    | BANKING       | MANAGER     |  100000.00 | 2017-05-15 | HYD  |
+| EMP108 | CHAND    | SALES DEPT    | SERVICER    |  120000.00 | 2011-07-25 | BNG  |
+| EMP110 | VIKRAM   | PRIVATESECTOR | BUSINESSMAN | 2000000.00 | 2015-09-05 | VJY  |
++--------+----------+---------------+-------------+------------+------------+------+
+3 rows in set (0.00 sec)
+
+Select (DQL) Questions
+
+1. Display all employees from the employees table.
+mysql> SELECT * FROM EMPLOYEES;
++--------+----------+---------------+-------------+------------+------------+------+
+| EMP_ID | EMP_NAME | DEPT          | JOB_ROLE    | SALARY     | DOJ        | CITY |
++--------+----------+---------------+-------------+------------+------------+------+
+| EMP107 | BASHA    | BANKING       | MANAGER     |  100000.00 | 2017-05-15 | HYD  |
+| EMP108 | CHAND    | SALES DEPT    | SERVICER    |  120000.00 | 2011-07-25 | BNG  |
+| EMP110 | VIKRAM   | PRIVATESECTOR | BUSINESSMAN | 2000000.00 | 2015-09-05 | VJY  |
++--------+----------+---------------+-------------+------------+------------+------+
+3 rows in set (0.00 sec)
+
+2. Display employees working in the IT department
+mysql> SELECT * FROM EMPLOYEES WHERE DEPT='IT COMAPANY';
+Empty set (0.01 sec)
+
+3. Display employees earning more than 50000.
+mysql> SELECT*FROM EMPLOYEES WHERE SALARY>50000;
++--------+----------+---------------+-------------+------------+------------+------+
+| EMP_ID | EMP_NAME | DEPT          | JOB_ROLE    | SALARY     | DOJ        | CITY |
++--------+----------+---------------+-------------+------------+------------+------+
+| EMP107 | BASHA    | BANKING       | MANAGER     |  100000.00 | 2017-05-15 | HYD  |
+| EMP108 | CHAND    | SALES DEPT    | SERVICER    |  120000.00 | 2011-07-25 | BNG  |
+| EMP110 | VIKRAM   | PRIVATESECTOR | BUSINESSMAN | 2000000.00 | 2015-09-05 | VJY  |
++--------+----------+---------------+-------------+------------+------------+------+
+3 rows in set (0.00 sec)
+
+4. Display only employee names and salaries.
+mysql> SELECT EMP_NAME,SALARY FROM EMPLOYEES;
++----------+------------+
+| EMP_NAME | SALARY     |
++----------+------------+
+| BASHA    |  100000.00 |
+| CHAND    |  120000.00 |
+| VIKRAM   | 2000000.00 |
++----------+------------+
+3 rows in set (0.00 sec)
+
+5. Display employees who are from Vizag.
+mysql> SELECT * FROM EMPLOYEES WHERE CITY='VIZAG';
+Empty set (0.00 sec)
+
+6. Display employees who joined after January 1, 2015.
+mysql> SELECT * FROM EMPLOYEES WHERE DOJ>'2015-01-01';
++--------+----------+---------------+-------------+------------+------------+------+
+| EMP_ID | EMP_NAME | DEPT          | JOB_ROLE    | SALARY     | DOJ        | CITY |
++--------+----------+---------------+-------------+------------+------------+------+
+| EMP107 | BASHA    | BANKING       | MANAGER     |  100000.00 | 2017-05-15 | HYD  |
+| EMP110 | VIKRAM   | PRIVATESECTOR | BUSINESSMAN | 2000000.00 | 2015-09-05 | VJY  |
++--------+----------+---------------+-------------+------------+------------+------+
+2 rows in set (0.00 sec)
+
+7. Display employees earning between 100000 and 600000.
+mysql> SELECT * FROM EMPLOYEES WHERE SALARY>100000 AND SALARY<600000;
++--------+----------+------------+----------+-----------+------------+------+
+| EMP_ID | EMP_NAME | DEPT       | JOB_ROLE | SALARY    | DOJ        | CITY |
++--------+----------+------------+----------+-----------+------------+------+
+| EMP108 | CHAND    | SALES DEPT | SERVICER | 120000.00 | 2011-07-25 | BNG  |
++--------+----------+------------+----------+-----------+------------+------+
+1 row in set (0.00 sec)
+
+8. Display employees whose names end with Kumar.
+mysql> SELECT * FROM EMPLOYEES WHERE EMP_NAME LIKE '%KUMAR';
+Empty set (0.01 sec)
+
+9. Display all employees in descending order of salary.
+mysql> SELECT * FROM EMPLOYEES ORDER BY SALARY DESC;
++--------+----------+---------------+-------------+------------+------------+------+
+| EMP_ID | EMP_NAME | DEPT          | JOB_ROLE    | SALARY     | DOJ        | CITY |
++--------+----------+---------------+-------------+------------+------------+------+
+| EMP110 | VIKRAM   | PRIVATESECTOR | BUSINESSMAN | 2000000.00 | 2015-09-05 | VJY  |
+| EMP108 | CHAND    | SALES DEPT    | SERVICER    |  120000.00 | 2011-07-25 | BNG  |
+| EMP107 | BASHA    | BANKING       | MANAGER     |  100000.00 | 2017-05-15 | HYD  |
++--------+----------+---------------+-------------+------------+------------+------+
+3 rows in set (0.00 sec)
+
+10. Display the highest-paid employee.
+mysql> SELECT * FROM EMPLOYEES WHERE SALARY=(SELECT MAX(SALARY) FROM EMPLOYEES);
++--------+----------+---------------+-------------+------------+------------+------+
+| EMP_ID | EMP_NAME | DEPT          | JOB_ROLE    | SALARY     | DOJ        | CITY |
++--------+----------+---------------+-------------+------------+------------+------+
+| EMP110 | VIKRAM   | PRIVATESECTOR | BUSINESSMAN | 2000000.00 | 2015-09-05 | VJY  |
++--------+----------+---------------+-------------+------------+------------+------+
+1 row in set (0.01 sec)
